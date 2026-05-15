@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-label="Kolkata corporate shuttle route skyline">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffd36a"/>
+      <stop offset=".52" stop-color="#ff9b41"/>
+      <stop offset="1" stop-color="#1f3447"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" x2="1">
+      <stop offset="0" stop-color="#26364b"/>
+      <stop offset=".5" stop-color="#172238"/>
+      <stop offset="1" stop-color="#0d1729"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#2b1708" flood-opacity=".28"/>
+    </filter>
+  </defs>
+  <rect width="900" height="360" fill="url(#sky)"/>
+  <circle cx="742" cy="80" r="44" fill="#fff2b4" opacity=".9"/>
+  <path fill="#203246" opacity=".28" d="M0 170h54v-36h36v36h48v-62h55v62h41v-84h54v84h64v-44h42v44h43v-70h56v70h55v-50h48v50h48v-88h60v88h44v-40h38v40h74v190H0z"/>
+  <path fill="#16253a" opacity=".85" d="M0 206h40v-48h56v48h34v-80h72v80h48v-54h56v54h62v-92h70v92h36v-42h52v42h54v-70h76v70h42v-52h58v52h44v-86h70v186H0z"/>
+  <path fill="#f7b457" opacity=".36" d="M0 224c98-24 170-22 252 6 116 39 192 34 284 3 101-34 196-30 364 20v107H0z"/>
+  <path fill="url(#road)" d="M0 278c140-38 260-43 382-12 143 36 298 33 518-15v109H0z"/>
+  <path fill="none" stroke="#ffdf8e" stroke-width="5" stroke-linecap="round" stroke-dasharray="16 18" d="M42 306c130-35 237-39 348-11 137 34 286 31 463-14"/>
+  <g filter="url(#softShadow)" transform="translate(510 216)">
+    <rect x="0" y="20" width="154" height="68" rx="22" fill="#fff7dd"/>
+    <rect x="16" y="5" width="112" height="40" rx="17" fill="#fff7dd"/>
+    <rect x="24" y="18" width="32" height="20" rx="6" fill="#2b5b72"/>
+    <rect x="66" y="18" width="32" height="20" rx="6" fill="#2b5b72"/>
+    <rect x="108" y="18" width="24" height="20" rx="6" fill="#2b5b72"/>
+    <rect x="16" y="52" width="122" height="8" rx="4" fill="#ff8f36"/>
+    <circle cx="39" cy="90" r="15" fill="#172238"/>
+    <circle cx="119" cy="90" r="15" fill="#172238"/>
+    <circle cx="39" cy="90" r="6" fill="#d6ecf2"/>
+    <circle cx="119" cy="90" r="6" fill="#d6ecf2"/>
+  </g>
+  <g fill="#fff7dd" opacity=".88">
+    <circle cx="118" cy="267" r="5"/>
+    <circle cx="255" cy="272" r="5"/>
+    <circle cx="391" cy="292" r="5"/>
+    <circle cx="705" cy="274" r="5"/>
+  </g>
+</svg>
