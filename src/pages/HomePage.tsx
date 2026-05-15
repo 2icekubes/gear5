@@ -45,14 +45,14 @@ export function HomePage() {
         <button className={`commute-card ${selectedDirection === 'morning' ? 'is-active' : ''}`} onClick={() => openRides('morning')}>
           <Icon name="sun" className="commute-card__icon commute-card__icon--sun" />
           <Icon name="chevronRight" className="commute-card__chevron" />
-          <span className="commute-card__title">Book Morning<br />Ride</span>
+          <span className="commute-card__title">Book Morning Ride</span>
           <small>{shortStopName(rider.defaultPickupStopId)} - {shortStopName(rider.defaultDropStopId)}</small>
           <strong>{firstMorning ? formatTime(firstMorning.departureTime) : 'No rides'}</strong>
         </button>
         <button className={`commute-card commute-card--teal ${selectedDirection === 'evening' ? 'is-active' : ''}`} onClick={() => openRides('evening')}>
           <Icon name="moon" className="commute-card__icon commute-card__icon--moon" />
           <Icon name="chevronRight" className="commute-card__chevron" />
-          <span className="commute-card__title">Book Evening<br />Ride</span>
+          <span className="commute-card__title">Book Evening Ride</span>
           <small>{shortStopName(rider.defaultDropStopId)} - {shortStopName(rider.defaultPickupStopId)}</small>
           <strong>{firstEvening ? formatTime(firstEvening.departureTime) : 'No rides'}</strong>
         </button>

@@ -6,7 +6,7 @@ export function RidePackPage() {
 
   return (
     <div className="page">
-      <Header title="Ride Pack" subtitle="Admin-managed balance for office commutes." />
+      <Header title="Ride Pack" subtitle="Admin-managed balance for Morning Rides." />
       <section className="balance-hero">
         <small>Available balance</small>
         <strong>{rides} of 15</strong>

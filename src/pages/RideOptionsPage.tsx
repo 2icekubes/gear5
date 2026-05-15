@@ -24,7 +24,7 @@ export function RideOptionsPage() {
   return (
     <div className="page">
       <Header
-        title={selectedDirection === 'morning' ? 'Office commute' : 'Return commute'}
+        title={selectedDirection === 'morning' ? 'Morning Ride' : 'Evening Ride'}
         subtitle={`${stopById(pickupStopId).name} → ${stopById(dropStopId).name}`}
         backTo="/"
       />

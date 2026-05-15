@@ -47,8 +47,21 @@ export const useRideStore = create<RideStore>()(
       swapStops: () => set((state) => ({ pickupStopId: state.dropStopId, dropStopId: state.pickupStopId })),
       createBooking: (rideId, seats) => {
         const ride = rideById(rideId);
-        const state = get();
-        if (!ride || ride.status !== 'available' || state.packageRidesRemaining < seats || seats < 1 || seats > 2) return null;
+        // ensure we operate on latest state
+        let state = get();
+        // basic validation
+        if (!ride || ride.status !== 'available' || seats < 1 || seats > 2) return null;
+
+        // If there is an existing active booking, cancel it first (modify flow).
+        if (state.activeBooking) {
+          // calling the cancel helper will refund seats back to package balance
+          get().cancelActiveBooking();
+          state = get();
+        }
+
+        // after possible cancellation, ensure package balance
+        if (state.packageRidesRemaining < seats) return null;
+
         const id = `${Date.now().toString(36)}-${ride.id}`;
         const booking: Booking = {
           id,
@@ -69,7 +82,8 @@ export const useRideStore = create<RideStore>()(
           driverMobile: ride.driverMobile,
           etaToPickupMinutes: ride.etaToPickupMinutes,
         };
-        set({ activeBooking: booking, bookings: [...state.bookings, booking], packageRidesRemaining: state.packageRidesRemaining - seats });
+        // append booking and set as activeBooking
+        set((s) => ({ activeBooking: booking, bookings: [...s.bookings, booking], packageRidesRemaining: s.packageRidesRemaining - seats }));
         return booking;
       },
       cancelBooking: (bookingId) =>
