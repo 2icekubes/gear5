@@ -52,6 +52,17 @@ export const useRideStore = create<RideStore>()(
         // basic validation
         if (!ride || ride.status !== 'available' || seats < 1 || seats > 2) return null;
 
+        // Prevent duplicate bookings for the same ride and stop pair.
+        if (
+          state.activeBooking &&
+          state.activeBooking.rideId === ride.id &&
+          state.activeBooking.pickupStopId === state.pickupStopId &&
+          state.activeBooking.dropStopId === state.dropStopId &&
+          state.activeBooking.seats === seats
+        ) {
+          return null;
+        }
+
         // If there is an existing active booking, cancel it first (modify flow).
         if (state.activeBooking) {
           // calling the cancel helper will refund seats back to package balance

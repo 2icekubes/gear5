@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppButton } from '../components/common/AppButton';
 import { Icon } from '../components/common/Icon';
 import { StatusPill } from '../components/common/StatusPill';
-import heroRouteUrl from '../assets/kolkata_route_skyline.svg';
+import heroRouteUrl from '../assets/final-hero.webp';
 import { rideOptions } from '../data/rides';
 import { stopById } from '../data/stops';
 import { rider } from '../data/user';
@@ -33,11 +33,8 @@ export function HomePage() {
         <img className="hero-panel__image" src={heroRouteUrl} alt="" aria-hidden="true" />
         <div className="hero-panel__copy">
           <p className="brand-wordmark">GEAR5</p>
-          <h1>
-            <span>Ikuzo!!</span>
-            <span>Sencho.</span>
-          </h1>
-          <p>Good Morning, {rider.name.split(' ')[0]}!!</p>
+          <h1>Ikuzo!! Sencho.</h1>
+          <p className="hero-panel__greeting">Good Morning, {rider.name.split(' ')[0]}!!</p>
         </div>
       </section>
 

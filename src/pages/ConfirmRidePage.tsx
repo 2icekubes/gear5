@@ -13,15 +13,32 @@ export function ConfirmRidePage() {
   const { rideId } = useParams();
   const navigate = useNavigate();
   const ride = rideById(rideId);
-  const { packageRidesRemaining, pickupStopId, dropStopId, createBooking } = useRideStore();
+  const { activeBooking, packageRidesRemaining, pickupStopId, dropStopId, createBooking } = useRideStore();
   const [seats, setSeats] = useState(1);
-  const allowed = canConfirmBooking(ride, packageRidesRemaining, seats);
+  const [error, setError] = useState('');
+  const isDuplicateBooking =
+    Boolean(
+      activeBooking &&
+        activeBooking.rideId === ride?.id &&
+        activeBooking.pickupStopId === pickupStopId &&
+        activeBooking.dropStopId === dropStopId,
+    );
+  const allowed = canConfirmBooking(ride, packageRidesRemaining, seats) && !isDuplicateBooking;
 
   if (!ride) return <EmptyState title="Ride unavailable" body="That shuttle option could not be found." actionLabel="Back to rides" to="/rides" />;
 
   const confirm = () => {
+    if (isDuplicateBooking) {
+      setError('You already have an active booking for this slot.');
+      return;
+    }
+
     const booking = createBooking(ride.id, seats);
-    if (booking) navigate('/success');
+    if (booking) {
+      navigate('/success');
+    } else {
+      setError('Booking could not be completed. Please try again or choose a different ride.');
+    }
   };
 
   return (
@@ -51,6 +68,7 @@ export function ConfirmRidePage() {
           <div><dt>Cancellation cutoff</dt><dd>{formatTime(new Date(new Date(ride.departureTime).getTime() - 30 * 60000).toISOString())}</dd></div>
         </dl>
         {packageRidesRemaining < seats && <p className="warning">Your package balance is below the requested seat count.</p>}
+        {error && <p className="warning">{error}</p>}
       </section>
       <div className="confirm-action">
         <AppButton disabled={!allowed} onClick={confirm}>Confirm ride</AppButton>

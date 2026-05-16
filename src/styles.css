@@ -368,7 +368,7 @@ button:disabled { cursor: not-allowed; opacity: 0.55; }
 .home-page .hero-panel {
   min-height: 168px;
   border-radius: 18px;
-  padding: 13px 16px;
+  padding: 0;
 }
 
 .home-page .hero-panel__image {
@@ -376,7 +376,11 @@ button:disabled { cursor: not-allowed; opacity: 0.55; }
 }
 
 .home-page .hero-panel__copy {
+  position: absolute;
+  inset: 13px 16px 5px;
+  height: auto;
   gap: 3px;
+  grid-template-rows: auto auto 1fr auto;
 }
 
 .home-page .hero-panel .brand-wordmark {
@@ -386,11 +390,20 @@ button:disabled { cursor: not-allowed; opacity: 0.55; }
 .home-page .hero-panel h1 {
   font-size: 18px;
   line-height: 0.98;
+  white-space: nowrap;
 }
 
 .home-page .hero-panel p {
   margin-top: 3px;
   font-size: 13px;
+}
+
+.home-page .hero-panel__greeting {
+  align-self: end;
+  margin: 0;
+  color: #f3f0e8;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.44);
 }
 
 .commute-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -1755,6 +1768,8 @@ button:disabled { cursor: not-allowed; opacity: 0.55; }
   justify-content: center;
   gap: 14px;
   font-size: 15px;
+  background: #25d366;
+  color: #050505;
 }
 
 .button-icon {
@@ -2069,12 +2084,23 @@ button:disabled { cursor: not-allowed; opacity: 0.55; }
 
 .driver-page--details .route-overview-panel {
   padding: 14px 16px;
+  background: #101010;
+  border: 1px solid #242424;
 }
 
 .driver-page--details .route-overview-panel .panel-heading span,
 .driver-page--details .route-overview-panel .panel-heading b,
 .driver-page--details .all-stops-button {
   font-size: 13px;
+}
+
+.driver-page--details .route-overview-panel .stop-node {
+  padding: 12px 0;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.driver-page--details .route-overview-panel .stop-node:last-child {
+  border-bottom: 0;
 }
 
 .driver-page--details .stop-timeline {
@@ -2342,8 +2368,14 @@ button:disabled { cursor: not-allowed; opacity: 0.55; }
 .boarding-progress-card strong {
   display: block;
   margin-top: 3px;
-  font-size: 12px;
-  line-height: 1.15;
+  font-size: 32px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.next-boarding-card strong {
+  font-size: 28px;
+  line-height: 1.05;
 }
 
 .current-rider-chips,
