@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
+    "mockups": "node scripts/mockup-intake.mjs",
+    "mockups:deck": "python scripts/export-ui-review-deck.py",
     "typecheck": "tsc -b",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1"

@@ -17,6 +17,8 @@ Build in vertical slices. A slice is only complete when it includes the UI, stat
 
 Use the existing role routes as the product spec. Keep mock data shaped like future API responses so the backend connection is a replacement of services, not a rewrite of screens.
 
+For visual UI refinements, use the local mockup handoff in `docs/UI_MOCKUP_WORKFLOW.md` instead of long prose descriptions. Drop marked-up screenshots into `mockups/inbox/`, update `mockups/REQUEST.md`, then have Codex translate the mockup into the React/CSS implementation.
+
 ## Phase 0: Stabilize Prototype
 
 Goals:

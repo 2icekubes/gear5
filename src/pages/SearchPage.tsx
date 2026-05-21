@@ -15,9 +15,8 @@ export function SearchPage() {
 
   const results = useMemo(() => {
     const normalized = query.trim().toLowerCase();
-    return stops
-      .filter((stop) => !normalized || `${stop.name} ${stop.area} ${stop.landmark}`.toLowerCase().includes(normalized))
-      .slice(0, 6);
+    const matches = stops.filter((stop) => !normalized || `${stop.name} ${stop.area} ${stop.landmark}`.toLowerCase().includes(normalized));
+    return normalized ? matches : matches.slice(0, 25);
   }, [query]);
 
   const chooseStop = (stopId: string) => {
@@ -40,6 +39,7 @@ export function SearchPage() {
             <span className={`stop-kind stop-kind--${stop.kind}`} />
             <div>
               <strong>{stop.name}</strong>
+              <p>{[stop.area, stop.morningTime ? `Morning ${stop.morningTime}` : null].filter(Boolean).join(' · ')}</p>
             </div>
           </button>
         ))}

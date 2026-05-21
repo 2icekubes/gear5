@@ -8,6 +8,9 @@ export interface Stop {
   area: string;
   landmark: string;
   kind: 'home' | 'office' | 'transit';
+  latitude?: number;
+  longitude?: number;
+  morningTime?: string;
 }
 
 export interface Route {
